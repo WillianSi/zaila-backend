@@ -1,14 +1,14 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from huggingface_hub import InferenceClient
 import os
 from dotenv import load_dotenv
 
-# Carrega variáveis do arquivo .env
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
-# Pega o token da variável de ambiente
 HF_API_KEY = os.getenv("HF_API_KEY")
 
 if not HF_API_KEY:
